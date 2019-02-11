@@ -18,29 +18,33 @@ header {
      width: 300px;
 }
 
-.filter-list {
-     list-style-type: none;
-     font-family:  Arial;
-     font-size: 16px;
-     color: white;
+.button {
+  display: inline-block;
+  padding: 10px 10px;
+  margin-bottom: 10px;
+  width: 250px;
+  background: #143887;
+  border: none;
+  border-radius: 7px;
+  color: white;
+  font-family: sans-serif;
+  font-size: 16px;
+  cursor: pointer;
 }
 
-.filter-list span {
-     display: flex;
-     flex-direction: row;
-     padding: 10px 10px;
-     justify-content: space-between;
-     align-content: center;
-     width: 200px;
-     margin-top: 3px;
-     margin: bottom: 3px;
-     background-color: #0033A0;
-     opacity: .9;
-     border-radius: 10px;
+.button:hover {
+  background-color: #90ee90;
+  color: #222;
 }
 
-.filter-list span:hover {
-     background-color: #008000;
+.button:active,
+.button.is-checked {
+  background-color: #78AB46;
+}
+
+.button.is-checked {
+  color: white;
+  text-shadow: 0 -1px hsla(0, 0%, 0%, 0.8);
 }
 
 .books {
@@ -77,7 +81,7 @@ header {
 .grid-item {
   float: left;
   width: 300px;
-  height: 420px;;
+  height: 450px;;
   display: flex;
   align-items: center;
 }

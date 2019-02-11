@@ -53,7 +53,7 @@ ajax_get('books.json', function(data) {
 
           // console.log(imgHeight);
 
-          bookCovers += `<div class="grid-item"><img class="book-covers"  src="${currentValue.book.book_cover.src}"  style="500px" /></div>`;
+          bookCovers += `<div class="grid-item"><img class="book-covers"  src="${currentValue.book.book_cover.src}" /></div>`;
 
      });
 
@@ -66,10 +66,4 @@ var iso = new Isotope( elem, {
      // options
      itemSelector: '.grid-item',
      layoutMode: 'fitColumns'
-});
-
-// element argument can be a selector string
-//   for an individual element
-var iso = new Isotope( '.grid', {
-  // options
 });
