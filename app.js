@@ -38,6 +38,7 @@ ajax_get( 'books.json', function ( data ) {
     item.style.width = `320px`;
     item.style.marginBottom = `25px`;
 
+
     let img = document.createElement( 'img' );
     img.setAttribute( 'src', url );
     item.appendChild( img );
@@ -63,3 +64,4 @@ ajax_get( 'books.json', function ( data ) {
     }
   } );
 } );
+

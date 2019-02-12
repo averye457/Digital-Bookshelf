@@ -4,6 +4,7 @@
 
 .size-1of4 {
   width: 25%;
+
 }
 
 #grid[data-columns]::before {
