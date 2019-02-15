@@ -18,6 +18,70 @@ function ajax_get(url, callback) {
      xmlhttp.send();
 }
 
+
+function createModal ( event ) {
+
+     ajax_get( 'books.json', function( data ) {
+
+          let modal = document.createElement( 'div' );
+          modal.setAttribute( 'class', 'modal' );
+          modal.setAttribute( 'id', event.clientX );
+          document.body.appendChild( modal );
+          let modalContent = document.createElement( 'div' );
+          modalContent.setAttribute( 'class', 'modal-content' );
+          let infoContainer = document.createElement( 'div' );
+          infoContainer.setAttribute( 'class', 'info-container' );
+          let span = document.createElement( 'span' );
+          span.setAttribute( 'class', 'close' );
+          span.innerHTML = "&times;";
+          let paragraph = document.createElement( 'p' );
+          paragraph.setAttribute( 'class', 'info-paragraph' );
+          let infoBookCover = document.createElement( 'img' );
+          infoBookCover.setAttribute( 'class', 'info-book-cover' );
+          let infoTitle = document.createElement( 'h2' );
+          infoTitle.setAttribute( 'class', 'info-title' );
+          let infoAuthor = document.createElement( 'h3' );
+          infoAuthor.setAttribute( 'class', 'info-author' );
+
+          modal.appendChild( modalContent );
+          modalContent.appendChild( infoBookCover );
+          modalContent.appendChild( infoContainer );
+          infoContainer.appendChild( span );
+          infoContainer.appendChild( infoTitle );
+          infoContainer.appendChild( infoAuthor );
+          infoContainer.appendChild( paragraph );
+
+
+          modal.style.display = "block";
+
+          span.addEventListener( 'click',  function ( ) {
+               modal.style.display = "none";
+          });
+
+
+
+           data.books.forEach( function(index){
+               var clickedImgSrc = event.srcElement.src;
+               if ( index.book.book_cover.src === clickedImgSrc ) {
+                    var bookCoverSrc = index.book.book_cover.src;
+                    var summary = index.book.summary;
+                    var authorHeading = index.book.authors;
+                    var titleHeading = index.book.title
+                    infoBookCover.setAttribute( 'src', bookCoverSrc );
+                    paragraph.innerHTML = summary;
+                    infoAuthor.innerHTML = "By: " + authorHeading;
+                    infoTitle.innerHTML = titleHeading;
+               } else {
+                    return;
+               }
+          } );
+
+     } );
+
+
+}
+
+
 ajax_get('books.json', function(data) {
 
      let bookCovers = "";
@@ -26,7 +90,7 @@ ajax_get('books.json', function(data) {
 
      bookArray.forEach(function(currentValue, index) {
           // get height of image
-          const url = currentValue.book.book_cover.src;
+          let url = currentValue.book.book_cover.src;
           // console.log( 'url', url );
 
           var imgSize;
@@ -40,20 +104,11 @@ ajax_get('books.json', function(data) {
 
           // CREATE BUTTON THAT OPENS MODAL
           let openModal = document.createElement('button');
-          openModal.style.height = `110%`;
+          openModal.style.height = `100%`;
           openModal.style.width = `100%`;
-
-          // // CREATE MODAL
-          // let modal = document.createElement( 'div' );
-          // modal.setAttribute( 'class', 'modal' );
-          //
-          // // CREATE MODAL CONTENT
-          // let modalContent = document.createElement( 'div' );
-          // modal.appendChild( modalContent );
-          // modalContent.setAttribute( 'class', 'modalContent' );
-          // let innerText = document.createElement( 'p' );
-          // modalContent.appendChild( innerText );
-          // innerText.innerHTML = "TEST";
+          openModal.addEventListener( 'click', function ( event ) {
+               createModal( event );
+          });
 
 
           let img = document.createElement('img');
@@ -80,11 +135,6 @@ ajax_get('books.json', function(data) {
                $('button')
                     .attr('id', url);
 
-               $()
-                    .on('click', function() {
-                         console.log('it worked!');
-                    });
-
                //
                // let modal = document.createElement( 'div' );
                //      modal.setAttribute( 'id', url );
@@ -103,40 +153,3 @@ ajax_get('books.json', function(data) {
           }
      });
 });
-
-
-
-
-
-//
-//
-//
-// // OPEN BOOK INFO WINDOWS
-//
-//
-//
-// // Get the modal
-// var modal = document.getElementById('myModal');
-//
-// // Get the button that opens the modal
-// var btn = document.getElementById("myBtn");
-//
-// // Get the <span> element that closes the modal
-// var span = document.getElementsByClassName("close")[0];
-//
-// // When the user clicks on the button, open the modal
-// btn.onclick = function() {
-//   modal.style.display = "block";
-// }
-//
-// // When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-//
-// // When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
