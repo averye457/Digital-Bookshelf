@@ -58,6 +58,10 @@ function createModal ( event ) {
                modal.style.display = "none";
           });
 
+          window.addEventListener( 'click', function () {
+               modal.style.display = "none";
+          } );
+
 
 
            data.books.forEach( function(index){
