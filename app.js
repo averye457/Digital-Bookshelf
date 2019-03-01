@@ -136,17 +136,24 @@ ajax_get('books.json', function( data ) {
                          setImageHeight(); // so, our image is loaded and now run something!
                     });
 
-               $('button')
+               $('#grid'>'div'>'button')
                     .attr('id', url);
 
           }
 
           // The "run something" :D
           function setImageHeight() {
-               item.style.height = `${( (imgSize.h*3)/4 )}px`;
-               item.style.width = `${( (imgSize.w*3)/4 )}px`;
-               img.style.height = `${( (imgSize.h*3)/4 )}px`;
-               img.style.width = `${( (imgSize.w *3)/4 )}px`;
+               item.style.height = `${( (imgSize.h*4.2)/4 )}px`;
+               item.style.width = `${( (imgSize.w*4.2)/4 )}px`;
+               img.style.height = `${( (imgSize.h*4.2)/4 )}px`;
+               img.style.width = `${( (imgSize.w *4.2)/4 )}px`;
           }
      });
 });
+
+
+
+
+
+
+ //           FILTER BUTTONS
