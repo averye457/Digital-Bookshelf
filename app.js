@@ -171,15 +171,10 @@ ajax_get('books.json', function( data ) {
 function filterSelection(filterWord) {
 
 
-
-     console.log('CLICKED');
-
      const divs = document.querySelectorAll( 'div#grid > div > div' );
 
-     console.log(divs);
-
      divs.forEach( function lookThroughBooks( currentBook ) {
-          if ( currentBook.id !== filterWord  ) {
+          if ( currentBook.id !== filterWord ) {
                currentBook.setAttribute( 'class', 'hide' )
           }
      } )
@@ -194,7 +189,7 @@ function filterSelection(filterWord) {
 
 function clearSelections() {
 
-     const divs = document.querySelectorAll( 'div#grid > div > div' );
+     const divs = document.querySelectorAll( '#grid > div > div' );
 
      divs.forEach( function lookThroughBooks( currentBook ) {
 
@@ -206,20 +201,32 @@ function clearSelections() {
 
      clearButton.style.display= 'none';
 
+     var button = document.querySelectorAll('.filter-buttons > button');
+
+     button.forEach( function undoGreenBackCol(thisButton) {
+
+          if ( thisButton.id === 'clear-button' ) {
+               return;
+          } else {
+          thisButton.style.backgroundColor = "rgb( 24, 151, 212)";
+          }
+     } );
+
 }
 
 
 var button = document.querySelector(".filter-buttons");
 
 button.addEventListener('click', event => {
-     console.log(event.target.tagName);
 
-     if ( event.target.tagName === 'BUTTON' ) {
-          console.log('it was a button!');
+     if ( event.target.id=== 'clear-button' || event.target.id === 'clear-p' ) {
+          return;
+     } else if ( event.target.tagName === 'BUTTON' ) {
+          event.target.style.backgroundColor = 'green';
      } else if ( event.target.tagName === 'P' ) {
-
+          event.target.parentNode.style.backgroundColor = 'green';
      } else {
-          return
+          return;
      }
 
 })
