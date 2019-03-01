@@ -20,15 +20,21 @@ src: local('Gotham Black'), url('fonts/Gotham-Black.woff') format('woff');
 
 .filter-buttons {
      width: 400px;
+     height: 1080px;
      display: flex;
      flex-direction: column;
      align-items: center;
      margin: 0px 20px;
+     position: fixed;
 }
 
 button {
      padding: 0;
      margin: 0;
+}
+
+button:focus {
+     outline: none;
 }
 
 .filter-buttons button {
@@ -48,7 +54,7 @@ button {
 .filter-buttons button p {
      position: relative;
      top: 5px;
-     line-height: 18px;
+     line-height: 20px;
      width: auto;
 }
 
@@ -71,6 +77,8 @@ button {
 .grid-container {
      width: 1600px;
      float: right;
+     position: relative;
+     left: 445px;
 }
 
 .column {
@@ -183,4 +191,8 @@ img {
      padding: 0;
      margin-top: 25px;
      margin-bottom: 10px;
+}
+
+.hide {
+     display: none;
 }

@@ -148,6 +148,16 @@ ajax_get('books.json', function( data ) {
                img.style.height = `${( (imgSize.h*4.2)/4 )}px`;
                img.style.width = `${( (imgSize.w *4.2)/4 )}px`;
           }
+
+          let searchWord = currentValue.book.affiliations
+
+          if ( searchWord.length > 0 ) {
+               searchWord.forEach( function goThroughAffiliations( currentValue ){
+                    console.log( currentValue );
+                    item.setAttribute( 'id', currentValue );
+               } )
+          }
+
      });
 });
 
@@ -156,4 +166,43 @@ ajax_get('books.json', function( data ) {
 
 
 
- //           FILTER BUTTONS
+ //           FILTER BUTTON FUNCTION
+
+
+function filterSelection(filterWord) {
+
+     console.log('CLICKED');
+
+     const divs = document.querySelectorAll( 'div#grid > div > div' );
+
+     console.log(divs);
+
+     divs.forEach( function lookThroughBooks( currentBook ) {
+          if ( currentBook.id !== filterWord  ) {
+               currentBook.setAttribute( 'class', 'hide' )
+          }
+     } )
+
+     const clearButton = document.querySelector('#clear-button');
+
+     clearButton.style.display = 'inline-block'
+
+}
+
+
+
+function clearSelections() {
+
+     const divs = document.querySelectorAll( 'div#grid > div > div' );
+
+     divs.forEach( function lookThroughBooks( currentBook ) {
+
+          currentBook.removeAttribute("class");
+
+     } )
+
+     const clearButton = document.querySelector('#clear-button');
+
+     clearButton.style.display= 'none';
+
+}
