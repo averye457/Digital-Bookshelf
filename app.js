@@ -187,6 +187,9 @@ function filterSelection(filterWord) {
 
 
 
+
+//  CLEARS SELECTIONS WHEN CLEAR FILTERS BUTTON IS CLICKED
+
 function clearSelections() {
 
      const divs = document.querySelectorAll( '#grid > div > div' );
@@ -214,6 +217,10 @@ function clearSelections() {
 
 }
 
+
+
+
+//  CHANGES BACKGROUND OF CLICKED FILTER
 
 var button = document.querySelector(".filter-buttons");
 
