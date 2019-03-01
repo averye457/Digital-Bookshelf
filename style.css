@@ -49,11 +49,16 @@ button:focus {
      font-size: 15px;
      font-family: 'Gotham Book';
      margin-bottom: 5px;
+     border-radius: 3px;
+}
+
+.filter-buttons button:active {
+     background-color: #143887;
 }
 
 .filter-buttons button p {
      position: relative;
-     top: 5px;
+     top: 6px;
      line-height: 20px;
      width: auto;
 }
