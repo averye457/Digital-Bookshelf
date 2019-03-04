@@ -152,8 +152,32 @@ ajax_get('books.json', function( data ) {
           let searchWord = currentValue.book.affiliations
 
           if ( searchWord.length > 0 ) {
-               searchWord.forEach( function goThroughAffiliations( currentValue ){
-                    item.setAttribute( 'id', currentValue );
+               searchWord.forEach( function goThroughAffiliations( currentValue, index ){
+                    // console.log(currentValue, index);
+                    // console.log(item);
+
+                    if ( index === 0 ) {
+                         item.setAttribute( 'data-zero', currentValue.substring(0, 5) );
+                    } else if ( index === 1 ) {
+                         item.setAttribute( 'data-one', currentValue.substring(0, 5) );
+                    } else if ( index === 2 ) {
+                         item.setAttribute( 'data-two', currentValue.substring(0, 5) );
+                    } else if ( index === 3 ) {
+                         item.setAttribute( 'data-three', currentValue.substring(0, 5) );
+                    } else if ( index === 4 ) {
+                         item.setAttribute( 'data-four', currentValue.substring(0, 5) );
+                    } else if ( index === 5 ) {
+                         item.setAttribute( 'data-five', currentValue.substring(0, 5) );
+                    } else if ( index === 6 ) {
+                         item.setAttribute( 'data-six', currentValue.substring(0, 5) );
+                    } else if ( index === 7 ) {
+                         item.setAttribute( 'data-seven', currentValue.substring(0, 5) );
+                    } else if ( index === 8 ) {
+                         item.setAttribute( 'data-eight', currentValue.substring(0, 5) );
+                    } else if ( index === 9 ) {
+                         item.setAttribute( 'data-nine', currentValue.substring(0, 5) );
+                    } else {}
+
                } )
           }
 
@@ -174,9 +198,27 @@ function filterSelection(filterWord) {
      const divs = document.querySelectorAll( 'div#grid > div > div' );
 
      divs.forEach( function lookThroughBooks( currentBook ) {
-          if ( currentBook.id !== filterWord ) {
-               currentBook.setAttribute( 'class', 'hide' )
+
+          if (
+               // CHECKS TO SEE IF ANY OF THE DATA ATTRIBUTES HAVE THE FIRST 5 LETTERS OF THE FILTER WORD
+          currentBook.dataset.zero === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.one === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.two === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.three === filterWord.substring( 0, 5 )||
+          currentBook.dataset.four === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.five === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.six === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.seven === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.eight === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.nine === filterWord.substring( 0, 5 )) {
+
+               // DOES NOTHING
+
+          } else {
+               // HIDES THE ONES THAT DON'T MATCH
+               currentBook.setAttribute( 'class', 'hide' );
           }
+
      } )
 
      const clearButton = document.querySelector('#clear-button');
