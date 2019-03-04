@@ -21,7 +21,7 @@ function ajax_get(url, callback) {
 
 function createModal ( event ) {
 
-     ajax_get( 'https://www.as.uky.edu/faculty-book-json', function( data ) {
+     ajax_get( 'books.json', function( data ) {
 
           let modal = document.createElement( 'div' );
           modal.setAttribute( 'class', 'modal' );
@@ -52,14 +52,16 @@ function createModal ( event ) {
           infoContainer.appendChild( paragraph );
 
 
-          modal.style.display = "block";
+          modal.style.display = "flex";
 
           span.addEventListener( 'click',  function ( ) {
                modal.style.display = "none";
+               body.setAttribute('id', '');
           });
 
           window.addEventListener( 'click', function () {
                modal.style.display = "none";
+               body.setAttribute('id', '');
           } );
 
 
@@ -77,20 +79,25 @@ function createModal ( event ) {
                          infoAuthor.innerHTML = "By: " + authorHeading;
                     }
                     infoTitle.innerHTML = titleHeading;
+
                } else {
                     return;
                }
           } );
+
+          var body = document.querySelector('body');
+          console.log(body);
+          body.setAttribute('id', 'noScroll');
 
      } );
 
 
 }
 
-// https://www.as.uky.edu/faculty-book-json
+// books.json
 
 
-ajax_get('https://www.as.uky.edu/faculty-book-json', function( data ) {
+ajax_get('books.json', function( data ) {
 
      let bookCovers = "";
 
