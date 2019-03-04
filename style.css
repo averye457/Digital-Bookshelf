@@ -60,7 +60,7 @@ button:focus {
      line-height: 10px;
      position: relative;
      right: 3px;
-     top: 5px;
+     top: 0px;
      transform: scale(1.8);
      display: none;
 }
