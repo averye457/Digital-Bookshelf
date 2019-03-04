@@ -194,7 +194,6 @@ ajax_get('books.json', function( data ) {
 
 function filterSelection(filterWord) {
 
-
      const divs = document.querySelectorAll( 'div#grid > div > div' );
 
      divs.forEach( function lookThroughBooks( currentBook ) {
@@ -254,7 +253,10 @@ function clearSelections() {
           if ( thisButton.id === 'clear-button' ) {
                return;
           } else {
-          thisButton.style.backgroundColor = "rgb( 24, 151, 212)";
+               thisButton.style.background = '';
+               thisButton.style.backgroundColor = "rgb( 24, 151, 212)";
+               thisButton.classList.remove( 'selected' );
+               thisButton.childNodes[1].style.display = "none";
           }
      } );
 
@@ -269,12 +271,29 @@ var button = document.querySelector(".filter-buttons");
 
 button.addEventListener('click', event => {
 
-     if ( event.target.id=== 'clear-button' || event.target.id === 'clear-p' ) {
+     if ( event.target.id === 'clear-button' || event.target.id === 'clear-p' ) {
           return;
-     } else if ( event.target.tagName === 'BUTTON' ) {
-          event.target.style.backgroundColor = 'green';
+     } else if ( event.target.tagName === 'P' && event.target.parentNode.className === 'selected' ) {
+          event.target.parentNode.classList.remove( 'selected' );
+          event.target.parentNode.childNodes[1].style.display = "none";
+          event.target.parentNode.style.background = '';
+          event.target.parentNode.style.backgroundColor ='rgb( 24, 151, 212)';
+          clearSelections();
+     }  else if ( event.target.tagName === 'BUTTON' && event.target.className === 'selected' ) {
+          event.target.classList.remove( 'selected' );
+          event.target.childNodes[1].style.display = "none";
+          event.target.style.background = '';
+          event.target.style.backgroundColor ='rgb( 24, 151, 212)';
+          clearSelections();
      } else if ( event.target.tagName === 'P' ) {
-          event.target.parentNode.style.backgroundColor = 'green';
+          event.target.parentNode.className += 'selected';
+          event.target.parentNode.childNodes[1].style.display = "inline-block";
+          event.target.parentNode.style.background = 'linear-gradient(270deg, #d0451b 16%, #143887 16%)';
+     } else if ( event.target.tagName === 'BUTTON' ) {
+
+          event.target.className += 'selected';
+          event.target.childNodes[1].style.display = "inline-block";
+          event.target.style.background = 'linear-gradient(270deg, #d0451b 16%, #143887 16%)';
      } else {
           return;
      }
