@@ -210,7 +210,8 @@ function filterSelection(filterWord) {
           currentBook.dataset.six === filterWord.substring( 0, 5 ) ||
           currentBook.dataset.seven === filterWord.substring( 0, 5 ) ||
           currentBook.dataset.eight === filterWord.substring( 0, 5 ) ||
-          currentBook.dataset.nine === filterWord.substring( 0, 5 )) {
+          currentBook.dataset.nine === filterWord.substring( 0, 5 ) ||
+          currentBook.dataset.ten === filterWord.substring( 0, 5 )) {
 
                // DOES NOTHING
 
