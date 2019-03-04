@@ -72,8 +72,12 @@ function createModal ( event ) {
                     var authorHeading = index.book.authors;
                     var titleHeading = index.book.title
                     infoBookCover.setAttribute( 'src', bookCoverSrc );
-                    paragraph.innerHTML = summary;
-                    infoAuthor.innerHTML = "By: " + authorHeading;
+                    if ( index.book.authors.length > 0) {
+                         infoAuthor.innerHTML = "By: " + authorHeading;
+                    }
+                    if ( index.book.summary.length > 0) {
+                         paragraph.innerHTML = summary;
+                    }
                     infoTitle.innerHTML = titleHeading;
                } else {
                     return;
