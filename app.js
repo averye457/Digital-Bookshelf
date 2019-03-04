@@ -21,7 +21,7 @@ function ajax_get(url, callback) {
 
 function createModal ( event ) {
 
-     ajax_get( 'books.json', function( data ) {
+     ajax_get( 'https://www.as.uky.edu/faculty-book-json', function( data ) {
 
           let modal = document.createElement( 'div' );
           modal.setAttribute( 'class', 'modal' );
@@ -90,7 +90,7 @@ function createModal ( event ) {
 // https://www.as.uky.edu/faculty-book-json
 
 
-ajax_get('books.json', function( data ) {
+ajax_get('https://www.as.uky.edu/faculty-book-json', function( data ) {
 
      let bookCovers = "";
 
