@@ -203,6 +203,9 @@ ajax_get('books.json', function( data ) {
 
 function filterSelection(filterWord) {
 
+     var body = document.querySelector( 'body' );
+     body.classList.add( filterWord.substring(0, 5) );
+
      const divs = document.querySelectorAll( 'div#grid > div > div' );
 
      divs.forEach( function lookThroughBooks( currentBook ) {
@@ -233,6 +236,55 @@ function filterSelection(filterWord) {
      const clearButton = document.querySelector('#clear-button');
 
      clearButton.style.display = 'inline-block'
+
+}
+
+
+function unFilterSelection(filterWord) {
+
+     const divs = document.querySelectorAll( 'div#grid > div > div' );
+
+     divs.forEach( function lookThroughBooks( currentBook ) {
+
+          if (
+
+          currentBook.dataset.zero !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.one !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.two !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.three !== filterWord.substring( 0, 5 )&&
+          currentBook.dataset.four !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.five !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.six !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.seven !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.eight !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.nine !== filterWord.substring( 0, 5 ) &&
+          currentBook.dataset.ten !== filterWord.substring( 0, 5 )) {
+
+
+               currentBook.removeAttribute( 'class' );
+               var body = document.querySelector( 'body' );
+               body.classList.remove( filterWord.substring(0, 5) );
+
+               body.classList.forEach( function(element){
+                    filterSelection(element);
+               } );
+
+
+          } else {
+
+          }
+
+
+     } )
+
+     const clearButton = document.querySelector('#clear-button');
+
+     clearButton.style.display = 'inline-block'
+
+     var body = document.querySelector( 'body' );
+     if ( body.classList.length === 0 ) {
+          clearSelections();
+     }
 
 }
 
@@ -269,6 +321,9 @@ function clearSelections() {
           }
      } );
 
+     var body = document.querySelector( 'body' );
+     body.removeAttribute( 'class' );
+
 }
 
 
@@ -287,13 +342,13 @@ button.addEventListener('click', event => {
           event.target.parentNode.childNodes[1].style.display = "none";
           event.target.parentNode.style.background = '';
           event.target.parentNode.style.backgroundColor ='rgb( 24, 151, 212)';
-          clearSelections();
+          unFilterSelection( event.target.parentNode.childNodes[0].innerHTML );
      }  else if ( event.target.tagName === 'BUTTON' && event.target.className === 'selected' ) {
           event.target.classList.remove( 'selected' );
           event.target.childNodes[1].style.display = "none";
           event.target.style.background = '';
           event.target.style.backgroundColor ='rgb( 24, 151, 212)';
-          clearSelections();
+          unFilterSelection( event.target.childNodes[0].innerHTML );
      } else if ( event.target.tagName === 'P' ) {
           event.target.parentNode.className += 'selected';
           event.target.parentNode.childNodes[1].style.display = "inline-block";
