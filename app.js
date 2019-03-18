@@ -327,7 +327,7 @@ function clearSelections() {
                return;
           } else {
                thisButton.style.background = '';
-               thisButton.style.backgroundColor = "rgb( 24, 151, 212)";
+               thisButton.style.backgroundColor = "#1897D4";
                thisButton.classList.remove( 'selected' );
                thisButton.childNodes[1].style.opacity = "0";
           }
@@ -353,13 +353,13 @@ button.addEventListener('click', event => {
           event.target.parentNode.classList.remove( 'selected' );
           event.target.parentNode.childNodes[1].style.opacity = "0";
           event.target.parentNode.style.background = '';
-          event.target.parentNode.style.backgroundColor ='rgb( 24, 151, 212)';
+          event.target.parentNode.style.backgroundColor ='#1897D4';
           unFilterSelection( event.target.parentNode.childNodes[0].innerHTML );
      }  else if ( event.target.tagName === 'BUTTON' && event.target.className === 'selected' ) {
           event.target.classList.remove( 'selected' );
           event.target.childNodes[1].style.opacity= "0";
           event.target.style.background = '';
-          event.target.style.backgroundColor ='rgb( 24, 151, 212)';
+          event.target.style.backgroundColor ='#1897D4';
           unFilterSelection( event.target.childNodes[0].innerHTML );
      } else if ( event.target.tagName === 'P' ) {
           event.target.parentNode.className += 'selected';
