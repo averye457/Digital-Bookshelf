@@ -279,7 +279,7 @@ function unFilterSelection(filterWord) {
 
      const clearButton = document.querySelector('#clear-button');
 
-     clearButton.style.display = 'inline-block'
+     clearButton.style.display = 'flex'
 
      var body = document.querySelector( 'body' );
      if ( body.classList.length === 0 ) {
@@ -352,12 +352,11 @@ button.addEventListener('click', event => {
      } else if ( event.target.tagName === 'P' ) {
           event.target.parentNode.className += 'selected';
           event.target.parentNode.childNodes[1].style.display = "inline-block";
-          event.target.parentNode.style.background = 'linear-gradient(270deg, #d0451b 16%, #143887 16%)';
+          event.target.parentNode.style.background = '#202C57';
      } else if ( event.target.tagName === 'BUTTON' ) {
-
           event.target.className += 'selected';
           event.target.childNodes[1].style.display = "inline-block";
-          event.target.style.background = 'linear-gradient(270deg, #d0451b 16%, #143887 16%)';
+          event.target.style.background = '#202C57';
      } else {
           return;
      }
