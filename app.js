@@ -36,20 +36,26 @@ function createModal ( event ) {
           span.innerHTML = "&times;";
           let paragraph = document.createElement( 'p' );
           paragraph.setAttribute( 'class', 'info-paragraph' );
+          let leftColumn = document.createElement( 'div' );
+          leftColumn.setAttribute( 'class', 'leftColumn' );
           let infoBookCover = document.createElement( 'img' );
           infoBookCover.setAttribute( 'class', 'info-book-cover' );
           let infoTitle = document.createElement( 'h2' );
           infoTitle.setAttribute( 'class', 'info-title' );
           let infoAuthor = document.createElement( 'h3' );
           infoAuthor.setAttribute( 'class', 'info-author' );
+          let tagsUl = document.createElement( 'ul' );
+          tagsUl.setAttribute( 'class', 'tagsUl' );
 
           modal.appendChild( modalContent );
-          modalContent.appendChild( infoBookCover );
+          modalContent.appendChild( leftColumn );
+          leftColumn.appendChild( infoBookCover )
           modalContent.appendChild( infoContainer );
           infoContainer.appendChild( span );
           infoContainer.appendChild( infoTitle );
           infoContainer.appendChild( infoAuthor );
           infoContainer.appendChild( paragraph );
+          leftColumn.appendChild( tagsUl );
 
 
           modal.style.display = "flex";
@@ -76,9 +82,16 @@ function createModal ( event ) {
                     infoBookCover.setAttribute( 'src', bookCoverSrc );
                     paragraph.innerHTML = summary;
                     if ( index.book.authors.length > 0) {
-                         infoAuthor.innerHTML = "By: " + authorHeading;
+                         infoAuthor.innerHTML = "Author: " + authorHeading;
                     }
                     infoTitle.innerHTML = titleHeading;
+
+                    index.book.affiliations.forEach( index => {
+                         var li = document.createElement( 'li' )
+                         li.setAttribute('class', 'tags');
+                         li.innerHTML = index;
+                         tagsUl.appendChild( li );
+                    });
 
                } else {
                     return;
@@ -86,7 +99,6 @@ function createModal ( event ) {
           } );
 
           var body = document.querySelector('body');
-          console.log(body);
           body.setAttribute('id', 'noScroll');
 
      } );
@@ -279,7 +291,7 @@ function unFilterSelection(filterWord) {
 
      const clearButton = document.querySelector('#clear-button');
 
-     clearButton.style.display = 'flex'
+     clearButton.style.display = 'inline-block'
 
      var body = document.querySelector( 'body' );
      if ( body.classList.length === 0 ) {
@@ -317,7 +329,7 @@ function clearSelections() {
                thisButton.style.background = '';
                thisButton.style.backgroundColor = "rgb( 24, 151, 212)";
                thisButton.classList.remove( 'selected' );
-               thisButton.childNodes[1].style.display = "none";
+               thisButton.childNodes[1].style.opacity = "0";
           }
      } );
 
@@ -339,23 +351,23 @@ button.addEventListener('click', event => {
           return;
      } else if ( event.target.tagName === 'P' && event.target.parentNode.className === 'selected' ) {
           event.target.parentNode.classList.remove( 'selected' );
-          event.target.parentNode.childNodes[1].style.display = "none";
+          event.target.parentNode.childNodes[1].style.opacity = "0";
           event.target.parentNode.style.background = '';
           event.target.parentNode.style.backgroundColor ='rgb( 24, 151, 212)';
           unFilterSelection( event.target.parentNode.childNodes[0].innerHTML );
      }  else if ( event.target.tagName === 'BUTTON' && event.target.className === 'selected' ) {
           event.target.classList.remove( 'selected' );
-          event.target.childNodes[1].style.display = "none";
+          event.target.childNodes[1].style.opacity= "0";
           event.target.style.background = '';
           event.target.style.backgroundColor ='rgb( 24, 151, 212)';
           unFilterSelection( event.target.childNodes[0].innerHTML );
      } else if ( event.target.tagName === 'P' ) {
           event.target.parentNode.className += 'selected';
-          event.target.parentNode.childNodes[1].style.display = "inline-block";
+          event.target.parentNode.childNodes[1].style.opacity = "1";
           event.target.parentNode.style.background = '#202C57';
      } else if ( event.target.tagName === 'BUTTON' ) {
           event.target.className += 'selected';
-          event.target.childNodes[1].style.display = "inline-block";
+          event.target.childNodes[1].style.opacity = "1";
           event.target.style.background = '#202C57';
      } else {
           return;
