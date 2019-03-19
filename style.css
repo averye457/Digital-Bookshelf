@@ -86,6 +86,7 @@ button:focus {
      font-size: 20px;
      position: relative;
      left: 20px;
+     bottom: 1px;
      display: flex;
      opacity: 0;
 }
