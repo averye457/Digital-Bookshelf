@@ -184,6 +184,11 @@ button img {
      padding: 0;
 }
 
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    background: transparent;  /* optional: just make scrollbar invisible */
+}
+
 /* Modal Content/Box */
 .modal-content {
      overflow-y: scroll;
