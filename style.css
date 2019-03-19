@@ -205,6 +205,9 @@ button img {
      float: right;
      font-size: 28px;
      font-weight: bold;
+     position: fixed;
+     left: 1595px;
+     bottom: 825px;
 }
 
 .close:hover,
@@ -283,20 +286,45 @@ button img {
 }
 
 #up-arrow {
-     position: absolute;
+     position: fixed;
      top: 230px;
      left: 1700px;
      background-color: #202C57;
-     border-radius: 3px;
+     border-radius: 5px;
      height: 80px;
      width: 20px;
      transform: rotate(45deg);
+     opacity: .9;
 }
 
 #up-arrow:before {
      background-color: #202C57;
      content: "";
-     border-radius: 3px;
+     border-radius: 5px;
+     position: absolute;
+     width: 20px;
+     height: 80px;
+     top: -30.5px;
+     left: 30.5px;
+     transform: rotate(90deg);
+}
+
+#down-arrow {
+     position: fixed;
+     top: 620px;
+     left: 1743px;
+     background-color: #202C57;
+     border-radius: 5px;
+     height: 80px;
+     width: 20px;
+     transform: rotate(-135deg);
+     opacity: .9;
+}
+
+#down-arrow:before {
+     background-color: #202C57;
+     content: "";
+     border-radius: 5px;
      position: absolute;
      width: 20px;
      height: 80px;
