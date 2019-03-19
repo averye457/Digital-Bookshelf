@@ -96,7 +96,7 @@ button:focus {
 
 .filter-buttons button p {
      position: relative;
-     bottom: 6px;
+     bottom: 5px;
      line-height: 11px;
      width: auto;
      z-index: 2;
@@ -323,7 +323,7 @@ button img {
 }
 
 #down-arrow:before {
-     background-color: pink;
+     background-color: #202C57;
      content: "";
      border-radius: 5px;
      position: absolute;
