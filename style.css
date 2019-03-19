@@ -146,6 +146,11 @@ button:focus {
      margin-bottom: -20px !important;
 }
 
+.column div button {
+     border: none;
+     background-color: white;
+}
+
 button img {
      margin-left: -45px;
      margin-top: -55px;
@@ -181,8 +186,8 @@ button img {
      overflow-y: scroll;
      background-color: #FFFFFF;
      margin: auto;
-     padding: 40px;
-     border: 2px solid #C8C8C7;
+     padding: 20px;
+     border: 20px solid white;
      box-shadow: 0px 2px 4px rgba(0, 0, 0, .25);
      width: 75%;
      height: 65vh;
