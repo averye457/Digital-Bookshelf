@@ -323,7 +323,7 @@ button img {
 }
 
 #down-arrow:before {
-     background-color: #202C57;
+     background-color: yellow;
      content: "";
      border-radius: 5px;
      position: absolute;
